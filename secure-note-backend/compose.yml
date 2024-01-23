@@ -1,0 +1,29 @@
+
+#services:
+#  postgres:
+#    image: postgres
+#    container_name: postgres-container
+#    environment:
+#      POSTGRES_DB: odas
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: postgres
+#    ports:
+#      - "5432:5432"
+#    networks:
+#      - app-network
+#
+#  spring-app:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    container_name: spring-app-container
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - postgres
+#    networks:
+#      - app-network
+#
+#networks:
+#  app-network:
+#    driver: bridge
