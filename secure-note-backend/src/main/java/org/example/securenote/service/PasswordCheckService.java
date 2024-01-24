@@ -22,7 +22,7 @@ public class PasswordCheckService {
 		if (!password.matches(".*[A-Z].*")) {
 			throw new IllegalStateException("Provided password must have at least one capital letter.");
 		}
-		if (!password.matches("\\p{Punct}")) {
+		if (!password.matches(".*\\p{Punct}.*")) {
 			throw new IllegalStateException("Provided password must have at least one special character.");
 		}
 		if (entropyService.calculateEntropy(password) < MIN_PASSWORD_ENTROPY) {

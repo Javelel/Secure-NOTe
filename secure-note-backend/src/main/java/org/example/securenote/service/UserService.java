@@ -12,8 +12,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.naming.AuthenticationException;
-
 @Service
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
@@ -28,6 +26,8 @@ public class UserService implements UserDetailsService {
 		if (user == null) {
 			throw new UsernameNotFoundException("User " + email + " not found.");
 		}
+		//System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+		//System.out.println(passwordEncoder.encode("aA123456789."));
 		return user;
 	}
 	public User createUser(RegisterUserDto registerUserDto) {
@@ -42,17 +42,6 @@ public class UserService implements UserDetailsService {
 		userRepository.save(user);
 		return user;
 	}
-//	public void authenticateUser(@Valid LoginUserDto loginUserDto) throws AuthenticationException {
-//		User user = userRepository.findByEmailIgnoreCase(loginUserDto.email());
-//		if (user == null) {
-//			throw new AuthenticationException("Invalid email or password");
-//		}
-//
-//		boolean passwordMatch = passwordEncoder.matches(loginUserDto.password(), user.getPassword());
-//		if (!passwordMatch) {
-//			throw new AuthenticationException("Invalid email or password");
-//		}
-//	}
 
 
 }

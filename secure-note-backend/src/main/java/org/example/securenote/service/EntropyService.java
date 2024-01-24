@@ -23,13 +23,15 @@ public class EntropyService {
 	};
 
 	public int calculateEntropy(String password) {
-		int entropy = 0;
+		double entropy = 0;
 
 		for (int i = 0; i < CHAR_SETS.length; i++) {
 			if (CHAR_SETS[i].matcher(password).find()) {
-				entropy += CHAR_SET_SIZES[i];
+				entropy += Math.log(CHAR_SET_SIZES[i]) / Math.log(2);
 			}
 		}
-		return (int) Math.round(Math.log(entropy) / Math.log(2));
+		int ret = (int) Math.round(entropy * password.length());
+		System.out.println("Entropy: " + ret);
+		return ret;
 	}
 }

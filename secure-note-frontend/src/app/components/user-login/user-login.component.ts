@@ -5,6 +5,8 @@ import {Router} from "@angular/router";
 import {ErrorStateMatcher} from "@angular/material/core";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
+import {User} from "../../models/user";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-user-login',
@@ -22,7 +24,10 @@ import {MatButtonModule} from "@angular/material/button";
 export class UserLoginComponent {
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private readonly userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -32,10 +37,9 @@ export class UserLoginComponent {
   }
 
   onLogin() {
-    console.log('Login clicked!');
-    // @ts-ignore
-    console.log('Username:', this.loginForm.get('username').value);
-    // @ts-ignore
-    console.log('Password:', this.loginForm.get('password').value);
+    const username = this.loginForm.get('username')?.value;
+    const password = this.loginForm.get('password')?.value;
+    const user: User = {username, password};
+    this.userService.login(user);
   }
 }

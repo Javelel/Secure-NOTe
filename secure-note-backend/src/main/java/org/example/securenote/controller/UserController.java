@@ -22,7 +22,7 @@ public class UserController {
 
 	@PostMapping("api/auth/register")
 	@CrossOrigin(origins = "*")
-	public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterUserDto registerUserDto) {
+	public ResponseEntity<Void> registerUser(@Valid @RequestBody RegisterUserDto registerUserDto) {
 
 		userService.createUser(registerUserDto);
 		return ResponseEntity.ok().build();
