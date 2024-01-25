@@ -41,4 +41,11 @@ export class NoteService {
     console.log("dodaje notatke");
     return this.httpClient.post<NoteRequest>(`${this.baseUrl}`, noteRequest, options);
   }
+
+  deleteNoteById(id: string) {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.delete(`${this.baseUrl}/${id}`, options);
+  }
 }

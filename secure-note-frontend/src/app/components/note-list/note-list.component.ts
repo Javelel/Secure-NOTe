@@ -34,7 +34,9 @@ export class NoteListComponent {
 
 
   protected deleteNote(id: string) {
-    console.log(`delete note ${id}`);
+    this.noteService.deleteNoteById(id).subscribe(() => {
+      this.notes$ = this.noteService.getNotes();
+    });
   }
 
   createNote() {

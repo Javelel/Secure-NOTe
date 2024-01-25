@@ -3,14 +3,13 @@ package org.example.securenote.config;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -70,29 +69,43 @@ public class SecurityConfig {
 		};
 	}
 
+//	private AuthenticationSuccessHandler successHandler() {
+//		return new AuthenticationSuccessHandler() {
+//			@Override
+//			public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
+//												HttpServletResponse httpServletResponse, Authentication authentication)
+//					throws IOException, ServletException {
+//				System.out.println("Success");
+//				httpServletResponse.setStatus(200);
+//			}
+//		};
+//	}
+
+	@Autowired
+	private AuthenticationSuccessHandler successHandler;
+
 	private AuthenticationSuccessHandler successHandler() {
-		return new AuthenticationSuccessHandler() {
-			@Override
-			public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
-												HttpServletResponse httpServletResponse, Authentication authentication)
-					throws IOException, ServletException {
-				System.out.println("Success");
-				httpServletResponse.setStatus(200);
-			}
-		};
+		return successHandler;
 	}
 
+//	private AuthenticationFailureHandler failureHandler() {
+//		return new AuthenticationFailureHandler() {
+//			@Override
+//			public void onAuthenticationFailure(HttpServletRequest httpServletRequest,
+//												HttpServletResponse httpServletResponse, AuthenticationException e)
+//					throws IOException, ServletException {
+//				System.out.println("Failure");
+//				httpServletResponse.getWriter().append("Authentication failure");
+//				httpServletResponse.setStatus(401);
+//			}
+//		};
+//	}
+
+	@Autowired
+	private AuthenticationFailureHandler failureHandler;
+
 	private AuthenticationFailureHandler failureHandler() {
-		return new AuthenticationFailureHandler() {
-			@Override
-			public void onAuthenticationFailure(HttpServletRequest httpServletRequest,
-												HttpServletResponse httpServletResponse, AuthenticationException e)
-					throws IOException, ServletException {
-				System.out.println("Failure");
-				httpServletResponse.getWriter().append("Authentication failure");
-				httpServletResponse.setStatus(401);
-			}
-		};
+		return failureHandler;
 	}
 
 	@Bean
