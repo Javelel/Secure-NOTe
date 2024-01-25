@@ -1,0 +1,53 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=odas
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - webnet
+
+  api:
+    build:
+      context: ./secure-note-backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - webnet
+    depends_on:
+      - db
+
+  client:
+    build:
+      context: ./secure-note-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    networks:
+      - webnet
+
+#  nginx:
+#    image: nginx:alpine
+#    volumes:
+#      - ./nginx:/etc/nginx/conf.d
+#      - ./certs:/etc/ssl/certs:ro
+#    ports:
+#      - "443:443"
+#    depends_on:
+#      - client
+#      - api
+#    networks:
+#      - webnet
+
+volumes:
+  db-data:
+
+networks:
+  webnet:
