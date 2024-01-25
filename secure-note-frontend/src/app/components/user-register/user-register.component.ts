@@ -28,7 +28,7 @@ export class UserRegisterComponent {
 
   ngOnInit(): void {
     this.registerForm! = this.formBuilder.group({
-      username: ['', Validators.required],
+      username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
     });

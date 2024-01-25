@@ -6,6 +6,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {User} from "../../models/user";
 import {UserService} from "../../services/user.service";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {NgIf} from "@angular/common";
 
 
 @Component({
@@ -17,7 +18,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MatInputModule,
     FormsModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    NgIf
   ],
   providers: [HttpClient],
   templateUrl: './user-login.component.html',
@@ -33,7 +35,7 @@ export class UserLoginComponent {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
