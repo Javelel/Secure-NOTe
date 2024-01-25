@@ -61,14 +61,14 @@ export class NoteListComponent {
         this.noteService.getEncryptedNoteById(note.id, result).subscribe(note => {
           console.log('Content');
           console.log(note.content);
-          this.navigateToEdit(note.content, note);
+          this.navigateToShow(note.content, note);
         })
       } else {
         console.log('The dialog was closed');
       }
     });
   }
-  navigateToEdit(decryptedContent: string, note: NoteResource): void {
+  navigateToShow(decryptedContent: string, note: NoteResource): void {
     this.router.navigate(['notes', note.id], { state: { decryptedContent } }).then(r => {});
   }
 }

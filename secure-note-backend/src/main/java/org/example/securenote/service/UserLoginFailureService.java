@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.time.ZoneOffset;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -16,14 +17,13 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserLoginFailureService {
 	private final UserRepository userRepository;
-	private Duration duration = Duration.ofMinutes(10);
+	private Duration duration = Duration.ofMinutes(1);
 	private int maxFailedLoginAttempts = 3;
 
 	private boolean canAccountBeUnlocked(User user) {
-		long userLockStart = user.getLockTime().toEpochSecond(ZoneOffset.ofHours(0));
-		long now = System.currentTimeMillis() / 1000;
-
-		return userLockStart + duration.getSeconds() < now;
+		long userLockStart = user.getLockTime().toEpochSecond(ZoneOffset.ofHours(2));
+		long now = Instant.now().toEpochMilli() / 1000;
+		return userLockStart + duration.toSeconds() < now;
 	}
 
 	@Transactional
@@ -48,6 +48,7 @@ public class UserLoginFailureService {
 			System.out.println("User unlocked: " + user.getEmail());
 			return false;
 		}
+
 		return true;
 	}
 

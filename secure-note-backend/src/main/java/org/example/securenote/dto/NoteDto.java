@@ -12,7 +12,7 @@ public record NoteDto(
 		@Size(max = 100)
 		String title,
 
-		@Size(max = 500)
+		@Size(max = 1000)
 		String content,
 
 		Boolean isEncrypted,
