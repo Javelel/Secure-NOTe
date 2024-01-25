@@ -3,6 +3,7 @@ export class NoteResource {
     public readonly id: string,
     public readonly title: string,
     public readonly content: string,
-    public readonly creator: string,
+    public readonly isEncrypted: boolean,
+    public readonly authorName: string,
   ) {}
 }

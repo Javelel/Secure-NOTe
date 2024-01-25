@@ -1,8 +1,6 @@
 package org.example.securenote.service;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.securenote.dto.LoginUserDto;
 import org.example.securenote.dto.RegisterUserDto;
 import org.example.securenote.model.User;
 import org.example.securenote.repository.UserRepository;

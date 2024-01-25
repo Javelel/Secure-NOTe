@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class PasswordCheckService {
 
 	public static final int MIN_PASSWORD_LENGTH = 8;
-	public static final int MIN_PASSWORD_ENTROPY = 70;
+	public static final double MIN_PASSWORD_ENTROPY = 3;
 
 	private final EntropyService entropyService;
 

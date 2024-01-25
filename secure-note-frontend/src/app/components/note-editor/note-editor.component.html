@@ -7,5 +7,15 @@
     <mat-label>Content</mat-label>
     <textarea matInput formControlName="content"></textarea>
   </mat-form-field>
-  <button mat-raised-button color="primary" [disabled]="!noteForm.valid" type="submit" (click)="onSubmit()">Submit</button>
+
+  <mat-checkbox formControlName="isEncrypted">encrypt</mat-checkbox>
+
+  <div *ngIf="noteForm.get('isEncrypted')?.value">
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" />
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="primary" [disabled]="!noteForm.valid" type="submit">Submit</button>
 </form>

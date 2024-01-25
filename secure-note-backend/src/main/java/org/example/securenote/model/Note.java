@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor(access= AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class Note {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,13 +22,10 @@ public class Note {
 	private String content;
 
 	@Column(nullable = false)
-	private Boolean isPublic;
-
-	@Column(nullable = false)
 	@EqualsAndHashCode.Exclude
 	private Boolean isEncrypted;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	@EqualsAndHashCode.Exclude
 	private String password;
 

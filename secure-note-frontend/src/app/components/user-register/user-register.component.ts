@@ -4,6 +4,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {UserRegister} from "../../models/user-register";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-user-register',
@@ -22,22 +24,24 @@ import {MatInputModule} from "@angular/material/input";
 export class UserRegisterComponent {
   registerForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private readonly userService: UserService) {}
 
   ngOnInit(): void {
     this.registerForm! = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
     });
   }
 
   onRegister() {
-    console.log('Login clicked!');
-    // @ts-ignore
-    console.log('Username:', this.registerForm.get('username').value);
-    // @ts-ignore
-    console.log('Password:', this.registerForm.get('password').value);
-    // @ts-ignore
-    console.log('Confirm Password:', this.registerForm.get('confirmPassword').value);
+    const email = this.registerForm.get('username')?.value;
+    const password = this.registerForm.get('password')?.value;
+    const passwordConfirm = this.registerForm.get('confirmPassword')?.value;
+    const userRegister: UserRegister = {email, password, passwordConfirm};
+    this.userService.register(userRegister).subscribe({
+      next: () => console.log('register success'),
+      error: () => console.log('register failed')
+    })
   }
 }

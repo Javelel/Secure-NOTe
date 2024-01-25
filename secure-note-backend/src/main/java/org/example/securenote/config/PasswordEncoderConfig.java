@@ -13,10 +13,7 @@ public class PasswordEncoderConfig {
 	private static final int PARALLELISM = 4;
 	private static final int MEMORY_COST = 65536;
 	private static final int ITERATIONS = 4;
-/////////
 
-
-	///////////
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new Argon2PasswordEncoder(SALT_LENGTH, HASH_LENGTH, PARALLELISM, MEMORY_COST, ITERATIONS);
