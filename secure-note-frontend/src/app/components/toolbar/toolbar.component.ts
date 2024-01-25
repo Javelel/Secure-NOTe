@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-toolbar',
@@ -16,4 +17,11 @@ import {RouterLink} from "@angular/router";
 })
 export class ToolbarComponent {
 
+  constructor(private readonly userService: UserService, private readonly router: Router) { }
+  onLogout() {
+    this.userService.logout().subscribe({
+      next: () => this.router.navigate(['login']).then(r => {}),
+      error: () => console.log('logout failed')
+    })
+  }
 }

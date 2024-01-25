@@ -33,4 +33,11 @@ export class UserService {
     }
     return this.httpClient.post(`${this.baseUrl}/register`, userRegister, options);
   }
+
+  logout() {
+    const options = {
+      withCredentials: true
+    }
+    return this.httpClient.post(`${this.baseUrl}/logout`, {}, options);
+  }
 }
