@@ -71,4 +71,12 @@ public class NoteService {
 		}
 	}
 
+	@Transactional
+	public void deleteNoteById(User user, Long id) {
+		Note note = noteRepository.findById(id).orElseThrow();
+		if (note.getAuthor().equals(user)) {
+			noteRepository.deleteById(id);
+		}
+	}
+
 }

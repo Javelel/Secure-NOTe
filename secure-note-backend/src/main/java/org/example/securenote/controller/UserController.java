@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+// @CrossOrigin(origins = "*")
 public class UserController {
 	private final UserService userService;
 
 	@PostMapping("api/auth/register")
-	@CrossOrigin(origins = "*")
+	// @CrossOrigin(origins = "*")
 	public ResponseEntity<Void> registerUser(@Valid @RequestBody RegisterUserDto registerUserDto) {
 
 		userService.createUser(registerUserDto);
