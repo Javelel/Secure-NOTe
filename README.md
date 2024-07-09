@@ -8,6 +8,7 @@ The application is created using Angular and Java's Spring Boot framework.
 - Password is required to be strong (high enthropy, length, different kinds of characters)
 - User can Log in using email and password
 - After login user can create a note
+- Notes can be styled
 - Note can be ecrypted with a password
 - Logged user can display all the notes (only the titles)
 - User can show content of choosen note
@@ -19,4 +20,15 @@ The application is created using Angular and Java's Spring Boot framework.
  
 ## Technologies
 ### Front-end
+- TypeScript
+- Angular 17
+- Angular Material
+- RxJS
 ### Back-end
+- Java 17
+- Spring Boot
+- Maven
+- Lombok
+- PostgreSQL Database
+### Infrastructure
+- Docker
