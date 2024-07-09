@@ -44,7 +44,7 @@ Notes can be styled using HTML, to ensure safety, they are sanitized before show
 `git clone https://github.com/Javelel/Secure-NOTe.git
 cd Secure-NOTe`
 2. Run the application:
-`Docker compose up`
+`docker compose up`
 3. The application will be accessible at https://localhost.
 
 ## Screenshots
