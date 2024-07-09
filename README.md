@@ -32,3 +32,19 @@ The application is created using Angular and Java's Spring Boot framework.
 - PostgreSQL Database
 ### Infrastructure
 - Docker
+
+## Security
+Before saving, passwords are encrypted using the 'Argon2' algorithm.
+When trying to authenticate, the typed password after encryption is compared with saved password.
+Secured notes are encrypted while creating and deprycted while receiving using the 'AES/CBC/PKCS5Padding' algorithm.
+Notes can be styled using HTML, to ensure safety, they are sanitized before showing to client.
+
+## Installation
+1. Clone the repository to your local machine using Git:
+`git clone https://github.com/Javelel/Secure-NOTe.git
+cd Secure-NOTe`
+2. Run the application:
+`Docker compose up`
+3. The application will be accessible at https://localhost.
+
+## Screenshots
