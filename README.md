@@ -52,3 +52,25 @@ docker compose up
 4. The application will be accessible at https://localhost.
 
 ## Screenshots
+### email must be valid in order to register a new user
+![](https://github.com/Javelel/Secure-NOTe/blob/master/images/Zrzut%20ekranu%202024-07-08%20232309.png)
+### password must meet all the requirements
+![](https://github.com/Javelel/Secure-NOTe/blob/master/images/Zrzut%20ekranu%202024-07-08%20232343.png)
+### successful registration
+![register](https://github.com/Javelel/Secure-NOTe/blob/master/images/Zrzut%20ekranu%202024-07-08%20232230.png)
+### login
+![](https://github.com/Javelel/Secure-NOTe/blob/master/images/Zrzut%20ekranu%202024-07-08%20232438.png)
+### logged user can create a new note
+![](https://github.com/Javelel/Secure-NOTe/blob/master/images/Zrzut%20ekranu%202024-07-08%20232523.png)
+### creating a new note
+![](https://github.com/Javelel/Secure-NOTe/blob/master/images/Zrzut%20ekranu%202024-07-08%20232942.png)
+### logged user can see the title of the note
+![](https://github.com/Javelel/Secure-NOTe/blob/master/images/Zrzut%20ekranu%202024-07-08%20233011.png)
+### after clicking on the note, we can see the rest of it
+![](https://github.com/Javelel/Secure-NOTe/blob/master/images/Zrzut%20ekranu%202024-07-08%20233034.png)
+### note can be encrypted with the password
+![](https://github.com/Javelel/Secure-NOTe/blob/master/images/Zrzut%20ekranu%202024-07-08%20233134.png)
+### encrypted note can be decrypted with the password
+![](https://github.com/Javelel/Secure-NOTe/blob/master/images/Zrzut%20ekranu%202024-07-08%20233226.png)
+### decrypted note
+![](https://github.com/Javelel/Secure-NOTe/blob/master/images/Zrzut%20ekranu%202024-07-08%20233255.png)
