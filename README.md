@@ -41,10 +41,14 @@ Notes can be styled using HTML, to ensure safety, they are sanitized before show
 
 ## Installation
 1. Clone the repository to your local machine using Git:
-`git clone https://github.com/Javelel/Secure-NOTe.git
-cd Secure-NOTe`
+```
+git clone https://github.com/Javelel/Secure-NOTe.git
+cd Secure-NOTe
+```
 2. Run the application:
-`docker compose up`
-3. The application will be accessible at https://localhost.
+```
+docker compose up
+```
+4. The application will be accessible at https://localhost.
 
 ## Screenshots
